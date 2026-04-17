@@ -1,0 +1,74 @@
+pluginManagement {
+    repositories {
+        // CreeperHost 镜像（包含 NeoForge 插件）
+        maven { url = 'https://maven.creeperhost.net' }
+        // BMCLAPI 镜像（国内可直连）
+        maven { url = 'https://bmclapi2.bangbang93.com/maven' }
+        // 国内镜像加速插件下载
+        maven { url = 'https://maven.aliyun.com/repository/central' }
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = 'https://maven.neoforged.net/releases' }
+        // NeoForge 官方 CDN（已验证可用）
+        maven { url = 'https://neoforged.forgecdn.net/releases' }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+
+// 全局依赖仓库管理：让 settings 的仓库优先于插件注入的仓库
+// PREFER_SETTINGS 模式下，这里定义的仓库会比 build.gradle 和插件注入的优先
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        // CreeperHost 镜像：用于替代 maven.neoforged.net（包含 neoform-runtime 等）
+        maven {
+            name = "CreeperHost"
+            url = "https://maven.creeperhost.net"
+        }
+        // BMCLAPI 镜像
+        maven {
+            name = "BMCLAPI"
+            url = "https://bmclapi2.bangbang93.com/maven"
+        }
+        // 阿里云镜像（用于 Maven Central）
+        maven {
+            name = "AliYun"
+            url = "https://maven.aliyun.com/repository/central"
+        }
+        // ParchmentMC
+        maven {
+            name = "ParchmentMC"
+            url = "https://maven.parchmentmc.org"
+        }
+        // Modrinth Maven（用于 YSM/Vivecraft）
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content {
+                includeGroup "maven.modrinth"
+            }
+        }
+        // GeckoLib
+        maven {
+            name = "GeckoLib"
+            url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+        }
+        // NeoForge 官方 CDN（已验证可用，包含 neoforge + neoform-runtime jar）
+        maven {
+            name = "NeoForged-CDN"
+            url = "https://neoforged.forgecdn.net/releases"
+        }
+        // NeoForge 官方（备用）
+        maven {
+            name = "NeoForged"
+            url = "https://maven.neoforged.net/releases"
+        }
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'ysm-vivecraft-compat'
