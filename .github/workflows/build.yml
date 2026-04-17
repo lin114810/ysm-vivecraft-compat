@@ -1,0 +1,49 @@
+name: Build Mod
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+    
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.8'
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew 2>/dev/null || true
+    
+    - name: Build with Gradle
+      run: gradle build --no-daemon
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: ysm-vivecraft-compat-jar
+        path: build/libs/*.jar
+        retention-days: 30
+    
+    - name: Upload sources jar
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: ysm-vivecraft-compat-sources
+        path: build/libs/*-sources.jar
+        retention-days: 30
