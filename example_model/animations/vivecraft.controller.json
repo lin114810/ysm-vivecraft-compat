@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+
+    "controller.animation.player.vivecraft_main": {
+      "initial_state": "default",
+      "states": {
+
+        "default": {
+          "comment": "Standard non-VR state - uses normal animations",
+          "animations": [],
+          "transitions": [
+            {
+              "vr_active": "variable.is_vr_player == 1.0"
+            }
+          ]
+        },
+
+        "vr_active": {
+          "comment": "VR mode - apply VR tracking to bones",
+          "animations": [
+            "vr_tracking"
+          ],
+          "transitions": [
+            {
+              "default": "variable.is_vr_player == 0.0"
+            }
+          ]
+        }
+      }
+    },
+
+    "controller.animation.player.vivecraft_head": {
+      "initial_state": "default",
+      "states": {
+
+        "default": {
+          "animations": [],
+          "transitions": [
+            {
+              "vr_tracking": "variable.is_vr_player == 1.0"
+            }
+          ]
+        },
+
+        "vr_tracking": {
+          "comment": "VR head tracking state",
+          "animations": [
+            {
+              "vr_idle_head": "variable.is_vr_player"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "variable.is_vr_player != 1.0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
