@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.example.ysmvivecraft.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "YSMPlayerRendererMixin",
+    "VivecraftBodyRotationMixin"
+  ],
+  "client": [
+    "client.YSMLayerMixin",
+    "client.VivecraftHandRenderMixin",
+    "client.YSMMolangVariableMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
