@@ -1,0 +1,51 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+
+    "animation.player.vr_tracking": {
+      "loop": true,
+      "animation_length": 0.0,
+      "bones": {
+
+        "head": {
+          "rotation": [
+            "variable.vr_head_pitch",
+            "variable.vr_head_yaw",
+            "0"
+          ]
+        },
+
+        "rightArm": {
+          "rotation": [
+            "variable.vr_right_hand_pitch",
+            "variable.vr_right_hand_yaw",
+            "variable.vr_right_hand_roll"
+          ]
+        },
+
+        "leftArm": {
+          "rotation": [
+            "variable.vr_left_hand_pitch",
+            "variable.vr_left_hand_yaw",
+            "variable.vr_left_hand_roll"
+          ]
+        }
+      }
+    },
+
+    "animation.player.vr_idle_head": {
+      "loop": true,
+      "animation_length": 0.0,
+      "comment": "Apply head tracking with gentle smoothing",
+      "bones": {
+        "head": {
+          "rotation": [
+            "variable.vr_head_pitch * 0.8",
+            "variable.vr_head_yaw * 0.6",
+            "0"
+          ]
+        }
+      }
+    }
+  }
+}
