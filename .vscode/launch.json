@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - ysm-vivecraft-compat",
+        "order": 0
+      },
+      "projectName": "ysm-vivecraft-compat",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@H:\\ysm-vivecraft-compat\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@H:\\ysm-vivecraft-compat\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dysm_vivecraft_compat%%H:\\ysm-vivecraft-compat\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - ysm-vivecraft-compat",
+        "order": 1
+      },
+      "projectName": "ysm-vivecraft-compat",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@H:\\ysm-vivecraft-compat\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@H:\\ysm-vivecraft-compat\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dysm_vivecraft_compat%%H:\\ysm-vivecraft-compat\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}
